@@ -355,6 +355,7 @@ runs:
       shell: bash
       id: dbt-deploy-options
     - name: Debug all step outputs
+      shell: bash
       run: |
         echo "All outputs for dbt-deploy-options step:"
         echo '${{ toJSON(steps.dbt-deploy-options.outputs) }}'
