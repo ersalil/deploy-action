@@ -337,7 +337,7 @@ runs:
         done
 
         options=""
-        if [[ $DBT_DEPLOY == true ]]; then
+        if [[ $dbt_deploy == 1 ]]; then
           # Add mount path option
           if [[ "${{ inputs.mount-path }}" != "" ]]; then
             options="$options --mount-path=${{ inputs.mount-path }}"
@@ -351,10 +351,7 @@ runs:
 
         echo "DBT_DEPLOY=$DBT_DEPLOY" >> $GITHUB_OUTPUT
         echo "DBT_OPTIONS=$options" >> $GITHUB_OUTPUT
-        # salil's code
-        echo "DBT_DEPLOY value: $DBT_DEPLOY"
-        echo "DBT_OPTIONS value: $options"
-        #end s
+        echo $GITHUB_OUTPUT
         echo ::endgroup::
       shell: bash
       id: dbt-deploy-options
