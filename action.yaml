@@ -351,14 +351,13 @@ runs:
 
         echo "DBT_DEPLOY=$DBT_DEPLOY" >> $GITHUB_OUTPUT
         echo "DBT_OPTIONS=$options" >> $GITHUB_OUTPUT
+
+        echo "GITHUB_OUTPUT file contents:"
+        cat $GITHUB_OUTPUT || echo "GITHUB_OUTPUT is empty"
+
         echo ::endgroup::
       shell: bash
       id: dbt-deploy-options
-    - name: Debug all step outputs
-      shell: bash
-      run: |
-        echo "All outputs for dbt-deploy-options step:"
-        echo '${{ toJSON(steps.dbt-deploy-options.outputs) }}'
     - name: Get Deploy Type
       if: ${{ inputs.deploy-type == 'infer' || inputs.deploy-type == 'dags-only' || inputs.deploy-type == 'image-and-dags' }}
       run: |
